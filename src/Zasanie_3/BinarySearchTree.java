@@ -12,7 +12,6 @@ public class BinarySearchTree<E extends Comparable<E>> implements AbstractBinary
         if (root == null) {
             return new Node<>(element);
         }
-
         if (element.compareTo(root.value) < 0) {
             root.leftChild = insertRec(root.leftChild, element);
         } else if (element.compareTo(root.value) > 0) {
@@ -70,25 +69,16 @@ public class BinarySearchTree<E extends Comparable<E>> implements AbstractBinary
 
     @Override
     public Node<E> getLeft() {
-        if (root != null) {
-            return root.leftChild;
-        }
-        return null;
+        return (root != null) ? root.leftChild : null;
     }
 
     @Override
     public Node<E> getRight() {
-        if (root != null) {
-            return root.rightChild;
-        }
-        return null;
+        return (root != null) ? root.rightChild : null;
     }
 
     @Override
     public E getValue() {
-        if (root != null) {
-            return root.value;
-        }
-        return null;
+        return (root != null) ? root.value : null;
     }
 }

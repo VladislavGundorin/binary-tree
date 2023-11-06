@@ -1,7 +1,7 @@
 package Zasanie_3;
 
 public interface AbstractBinarySearchTree<E extends Comparable<E>> {
-    public static class Node<E> {
+    class Node<E> {
         public E value;
         public Node<E> leftChild;
         public Node<E> rightChild;

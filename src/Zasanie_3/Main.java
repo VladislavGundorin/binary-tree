@@ -17,17 +17,19 @@ public class Main {
         excellentStudentsTree2.insert(new Student("Арина", 100));
 
         System.out.println("Отличные студенты первой группы:");
-        printTreeInOrder(excellentStudentsTree1.getRoot());
+        printTreeInChristmasTreeShape(excellentStudentsTree1.getRoot(), "");
 
         System.out.println("Отличные студенты второй группы:");
-        printTreeInOrder(excellentStudentsTree2.getRoot());
+        printTreeInChristmasTreeShape(excellentStudentsTree2.getRoot(), "");
     }
 
-    private static void printTreeInOrder(AbstractBinarySearchTree.Node<Student> root) {
+    private static void printTreeInChristmasTreeShape(AbstractBinarySearchTree.Node<Student> root, String prefix) {
         if (root != null) {
-            printTreeInOrder(root.leftChild);
-            System.out.println(root.value.getName() + ": " + root.value.getGrade());
-            printTreeInOrder(root.rightChild);
+            System.out.println(prefix + root.value.getName() + ": " + root.value.getGrade());
+            if (root.leftChild != null || root.rightChild != null) {
+                printTreeInChristmasTreeShape(root.leftChild, prefix + "    ");
+                printTreeInChristmasTreeShape(root.rightChild, prefix + "    ");
+            }
         }
     }
 }

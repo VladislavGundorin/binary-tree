@@ -19,6 +19,11 @@ public class Student implements Comparable<Student> {
 
     @Override
     public int compareTo(Student other) {
-        return this.name.compareTo(other.getName());
+        int gradeComparison = Integer.compare(other.getGrade(), this.getGrade());
+        if (gradeComparison != 0) {
+            return gradeComparison;
+        }
+        return this.getName().compareTo(other.getName());
     }
+
 }

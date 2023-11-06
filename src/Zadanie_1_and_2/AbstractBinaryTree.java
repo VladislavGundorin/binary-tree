@@ -13,8 +13,10 @@ public interface AbstractBinaryTree<E> {
     List<AbstractBinaryTree<E>> inOrder();
     List<AbstractBinaryTree<E>> postOrder();
     void forEachInOrder(Consumer<E> consumer);
+
     List<AbstractBinaryTree<E>> levelOrder();
     void setLeft(AbstractBinaryTree<E> left);
     void setRight(AbstractBinaryTree<E> right);
 
+    void printTree(AbstractBinaryTree<E> root, int level);
 }

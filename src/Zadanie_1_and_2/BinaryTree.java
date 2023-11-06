@@ -1,7 +1,5 @@
 package Zadanie_1_and_2;
 
-import Zadanie_1_and_2.AbstractBinaryTree;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -133,4 +131,101 @@ public class BinaryTree<E> implements AbstractBinaryTree<E> {
 
         return result;
     }
+    @Override
+    public void printTree(AbstractBinaryTree<E> root, int level) {
+        if (root == null) {
+            return;
+        }
+
+        printTree(root.getRight(), level + 1);
+
+        for (int i = 0; i < level; i++) {
+            System.out.print("  ");
+        }
+        System.out.println(root.getKey());
+
+        printTree(root.getLeft(), level + 1);
+    }
+    public void printInOrderTree(AbstractBinaryTree<E> root) {
+        System.out.println("In-order tree:");
+        printTreeInOrder(root, 0);
+    }
+
+    private void printTreeInOrder(AbstractBinaryTree<E> root, int level) {
+        if (root == null) {
+            return;
+        }
+
+        printTreeInOrder(root.getRight(), level + 1);
+
+        for (int i = 0; i < level; i++) {
+            System.out.print("  ");
+        }
+        System.out.println(root.getKey());
+
+        printTreeInOrder(root.getLeft(), level + 1);
+    }
+    public void printPreOrderTree(AbstractBinaryTree<E> root) {
+        System.out.println("Pre-order tree:");
+        printTreePreOrder(root, 0);
+    }
+
+    private void printTreePreOrder(AbstractBinaryTree<E> root, int level) {
+        if (root == null) {
+            return;
+        }
+
+        for (int i = 0; i < level; i++) {
+            System.out.print("  ");
+        }
+        System.out.println(root.getKey());
+
+        printTreePreOrder(root.getLeft(), level + 1);
+        printTreePreOrder(root.getRight(), level + 1);
+    }
+    public void printPostOrderTree(AbstractBinaryTree<E> root) {
+        System.out.println("Post-order tree:");
+        printTreePostOrder(root, 0);
+    }
+
+    private void printTreePostOrder(AbstractBinaryTree<E> root, int level) {
+        if (root == null) {
+            return;
+        }
+
+        printTreePostOrder(root.getLeft(), level + 1);
+        printTreePostOrder(root.getRight(), level + 1);
+
+        for (int i = 0; i < level; i++) {
+            System.out.print("  ");
+        }
+        System.out.println(root.getKey());
+    }
+    public void printLevelOrderTree(AbstractBinaryTree<E> root) {
+        System.out.println("Level-order tree:");
+        if (root == null) {
+            return;
+        }
+
+        Queue<AbstractBinaryTree<E>> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+            for (int i = 0; i < levelSize; i++) {
+                AbstractBinaryTree<E> node = queue.poll();
+                System.out.print(node.getKey() + " ");
+
+                if (node.getLeft() != null) {
+                    queue.add(node.getLeft());
+                }
+                if (node.getRight() != null) {
+                    queue.add(node.getRight());
+                }
+            }
+            System.out.println();
+        }
+    }
+
+
 }
