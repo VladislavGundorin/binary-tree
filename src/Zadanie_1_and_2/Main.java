@@ -22,8 +22,8 @@ public class Main {
         tree.setLeft(new BinaryTree<>(2));
         tree.setRight(new BinaryTree<>(6));
         tree.getLeft().setLeft(new BinaryTree<>(1));
+         tree.getRight().setLeft(new BinaryTree<>(5));
         tree.getLeft().setRight(new BinaryTree<>(3));
-        tree.getRight().setLeft(new BinaryTree<>(5));
         tree.getRight().setRight(new BinaryTree<>(7));
 
         System.out.println("Tree in Christmas tree shape:");
