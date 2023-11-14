@@ -13,12 +13,14 @@ public class BinarySearchTree<E extends Comparable<E>> implements AbstractBinary
             return new Node<>(element);
         }
 
-        if (element.compareTo(current.value) < 0) {
-            current.leftChild = insertRecursive(current.leftChild, element);
-        } else if (element.compareTo(current.value) > 0) {
-            current.rightChild = insertRecursive(current.rightChild, element);
-        }
+        int comparison = element.compareTo(current.value);
 
+        if (comparison < 0) {
+            current.leftChild = insertRecursive(current.leftChild, element);
+        } else if (comparison > 0) {
+            current.rightChild = insertRecursive(current.rightChild, element);
+        } else {
+        }
         return current;
     }
 
@@ -32,11 +34,11 @@ public class BinarySearchTree<E extends Comparable<E>> implements AbstractBinary
             return false;
         }
 
-        if (element.equals(current.value)) {
-            return true;
-        }
+        int comparison = element.compareTo(current.value);
 
-        if (element.compareTo(current.value) < 0) {
+        if (comparison == 0) {
+            return true;
+        } else if (comparison < 0) {
             return containsRecursive(current.leftChild, element);
         } else {
             return containsRecursive(current.rightChild, element);
